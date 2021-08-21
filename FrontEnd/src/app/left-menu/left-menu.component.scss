@@ -1,0 +1,28 @@
+.left-menu {
+  height: 100vh;
+  background-color: #222222;
+}
+
+.brand {
+  text-align: center;
+  font-family: "sans-serif";
+  color: lawngreen;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10% 0;
+}
+
+.left-menu-button {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+  padding: 5%;
+}
+
+.left-menu-button:hover {
+  background-color: #444444;
+  color: lawngreen;
+}
