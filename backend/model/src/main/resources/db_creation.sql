@@ -47,6 +47,7 @@ create table video_game_platform(
 create table video_game_company(
     video_game_id integer,
     company_id integer,
+    role enum('developer', 'publisher'),
     foreign key (video_game_id) references video_games(id),
     foreign key (company_id) references companies(id),
     primary key (video_game_id, company_id)
