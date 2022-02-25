@@ -17,5 +17,5 @@ class Genre(
     val name: String,
 
     @ManyToMany
-    val videoGames: Set<VideoGame>
+    val videoGames: Set<VideoGame>?
 )

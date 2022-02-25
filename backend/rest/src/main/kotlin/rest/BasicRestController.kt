@@ -1,6 +1,9 @@
 package rest
 
 import classes.VideoGame
+import com.fasterxml.jackson.databind.exc.InvalidFormatException
+import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,8 +20,14 @@ class BasicRestController(@PersistenceContext val entityManager: EntityManager) 
     }
 
     @PostMapping("/insert")
-    fun insertVideoGame(@RequestBody videoGame: VideoGame) {
-        entityManager.persist(videoGame)
+    @Transactional
+    fun insertVideoGame(@RequestBody videoGame: VideoGame): ResponseEntity<String> {
+        return try {
+            entityManager.persist(videoGame)
+            ResponseEntity.accepted().body("Object VideoGame inserted successfully") //TODO
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body("Object VideoGame must contain at least {name: String, releaseDate: String(YYYY-MM-DD)}")
+        }
     }
 
 }
