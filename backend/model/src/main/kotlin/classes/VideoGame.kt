@@ -22,5 +22,13 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "genre_id")]
     )
-    val genres: Set<Genre>?
+    val genres: Set<Genre>?,
+
+    @ManyToMany
+    @JoinTable(
+        name = "video_game_platform",
+        joinColumns = [JoinColumn(name = "video_game_id")],
+        inverseJoinColumns = [JoinColumn(name = "platform_id")]
+    )
+    val platforms: Set<Platform>?
 )
