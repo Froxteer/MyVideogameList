@@ -1,13 +1,12 @@
 package app
 
-import classes.Genre
-import classes.VideoGame
+import entity.Genre
+import entity.VideoGame
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.runApplication
-import kotlin.reflect.KClass
 
-@SpringBootApplication(scanBasePackages = ["app", "rest", "classes"])
+@SpringBootApplication(scanBasePackages = ["app", "rest", "classes", "entity_service"])
 @EntityScan(basePackageClasses = [VideoGame::class, Genre::class])
 class BackendApplication
 

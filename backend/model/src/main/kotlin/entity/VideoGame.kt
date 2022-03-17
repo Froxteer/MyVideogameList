@@ -1,5 +1,6 @@
-package classes
+package entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import java.sql.Date
 import javax.persistence.*
 
@@ -7,6 +8,7 @@ import javax.persistence.*
 @Table(name = "video_games")
 class VideoGame(
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
 
@@ -22,6 +24,7 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "genre_id")]
     )
+    @JsonManagedReference
     val genres: Set<Genre>?,
 
     @ManyToMany
@@ -30,5 +33,15 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "platform_id")]
     )
-    val platforms: Set<Platform>?
+    @JsonManagedReference
+    val platforms: Set<Platform>?,
+
+    @ManyToMany
+    @JoinTable(
+        name = "video_game_company",
+        joinColumns = [JoinColumn(name = "video_game_id")],
+        inverseJoinColumns = [JoinColumn(name = "company_id")]
+    )
+    @JsonManagedReference
+    val companies: Set<Company>?
 )

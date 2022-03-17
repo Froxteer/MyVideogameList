@@ -10,7 +10,7 @@ create table video_games(
 
 create table genres(
     id integer primary key auto_increment,
-    name varchar(50)
+    name varchar(50) not null
 );
 
 create table companies(
@@ -23,7 +23,7 @@ create table companies(
 create table platforms(
     id integer primary key auto_increment,
     name varchar(50) not null,
-    release_date date not null,
+    release_date date,
     developer integer not null,
     foreign key (developer) references companies(id)
 );
@@ -47,7 +47,6 @@ create table video_game_platform(
 create table video_game_company(
     video_game_id integer,
     company_id integer,
-    role enum('developer', 'publisher'),
     foreign key (video_game_id) references video_games(id),
     foreign key (company_id) references companies(id),
     primary key (video_game_id, company_id)

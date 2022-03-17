@@ -8,6 +8,7 @@
         <module>app</module>
         <module>rest</module>
         <module>model</module>
+        <module>service</module>
     </modules>
 
     <parent>

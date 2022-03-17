@@ -1,5 +1,6 @@
-package classes
+package entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -12,12 +13,14 @@ import javax.persistence.Table
 @Table(name = "genres")
 class Genre(
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
 
     @Column(name = "name", nullable = false)
     val name: String,
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "genres")
+    @JsonBackReference
     val videoGames: Set<VideoGame>?
 )
