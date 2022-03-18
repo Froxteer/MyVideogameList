@@ -24,7 +24,7 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "genre_id")]
     )
-    @JsonManagedReference
+    @JsonManagedReference("video_game_genre")
     val genres: Set<Genre>?,
 
     @ManyToMany
@@ -33,7 +33,7 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "platform_id")]
     )
-    @JsonManagedReference
+    @JsonManagedReference("video_game_platform")
     val platforms: Set<Platform>?,
 
     @ManyToMany
@@ -42,6 +42,6 @@ class VideoGame(
         joinColumns = [JoinColumn(name = "video_game_id")],
         inverseJoinColumns = [JoinColumn(name = "company_id")]
     )
-    @JsonManagedReference
+    @JsonManagedReference("video_game_company")
     val companies: Set<Company>?
 )
