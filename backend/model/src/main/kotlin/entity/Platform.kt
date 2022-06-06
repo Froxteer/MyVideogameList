@@ -26,13 +26,13 @@ class Platform(
 
     @ManyToOne
     @JoinColumn(name = "developer")
-    @JsonManagedReference
+    @JsonManagedReference("platform_company")
     val developer: Company?,
 
     @Column(name = "release_date", nullable = true)
     val releaseDate: Date?,
 
     @ManyToMany(mappedBy = "platforms")
-    @JsonBackReference
+    @JsonBackReference("video_game_platform")
     val videoGames: Set<VideoGame>?
 )

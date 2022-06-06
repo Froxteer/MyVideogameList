@@ -22,10 +22,10 @@ class Company(
     val localization: String,
 
     @OneToMany(mappedBy = "developer")
-    @JsonBackReference
+    @JsonBackReference("platform_company")
     val platforms: Set<Platform>?,
 
     @ManyToMany(mappedBy = "companies")
-    @JsonBackReference
+    @JsonBackReference("video_game_company")
     val videoGames: Set<VideoGame>?
 )

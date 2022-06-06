@@ -21,6 +21,6 @@ class Genre(
     val name: String,
 
     @ManyToMany(mappedBy = "genres")
-    @JsonBackReference
+    @JsonBackReference("video_game_genre")
     val videoGames: Set<VideoGame>?
 )
