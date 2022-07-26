@@ -1,27 +1,24 @@
 package rest
 
-import entity_service.VideoGameService
 import classes.CustomResponse
-import entity.VideoGame
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-class VideoGameRestController(@Autowired val videoGameService: VideoGameService) {
+class VideoGameRestController(/*@Autowired val videoGameService: VideoGameService*/) {
 
-    @GetMapping("get/{id}")
+    /*@GetMapping("get/{id}")
     fun getVideoGame(@PathVariable id: Int): VideoGame {
         return videoGameService.getVideoGame(id)
-    }
+    }*/
 
-    @PostMapping("/insert")
+    /*@PostMapping("/insert")
     fun insertCompleteVideoGame(@RequestBody videoGame: VideoGame): ResponseEntity<CustomResponse> {
         videoGameService.insertCompleteVideoGame(videoGame)
         return ResponseEntity.accepted()
             .body(CustomResponse(202, "/insert", "Object VideoGame inserted successfully"))
-    }
+    }*/
 
     @ExceptionHandler(Exception::class)
     fun handleIncorrectData(req: HttpServletRequest, ex: Exception): ResponseEntity<CustomResponse> {

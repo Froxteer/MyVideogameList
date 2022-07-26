@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.runApplication
 
-@SpringBootApplication(scanBasePackages = ["app", "rest", "classes", "entity_service"])
+@SpringBootApplication(scanBasePackages = ["app", "rest", "classes"])
 @EntityScan(basePackageClasses = [VideoGame::class, Genre::class])
 class BackendApplication
 

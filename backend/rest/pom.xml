@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.myvideogamelist</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

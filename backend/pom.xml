@@ -8,7 +8,6 @@
         <module>app</module>
         <module>rest</module>
         <module>model</module>
-        <module>service</module>
     </modules>
 
     <parent>
@@ -22,7 +21,7 @@
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>backend</name>
-    <description>Parent project of the hole app api that acts as a controller for the MyVideoGameList app</description>
+    <description>Parent project of the hole app api that acts as a backend for the MyVideoGameList app</description>
 
     <properties>
         <java.version>17</java.version>
@@ -56,9 +55,9 @@
 
         <!-- Database drivers -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.4.0</version>
         </dependency>
 
         <!-- Test dependencies -->
@@ -74,12 +73,9 @@
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <!--<args> CAN'T FIND THIS IN THE OFFICIAL DOCS
                         <arg>-Xjsr305=strict</arg>
@@ -98,8 +94,7 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-noarg</artifactId>
-                        <!--suppress MavenModelInspection -->
-                        <version>${kotlin.version}</version> <!-- Apparently intellij can't find 1.6.10 -->
+                        <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
