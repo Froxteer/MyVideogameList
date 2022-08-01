@@ -1,0 +1,50 @@
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="col-2">
+      <form>
+        <div class="mb-3">
+          <label for="videoGameTitle" class="form-label">Video-game title</label>
+          <input type="email" class="form-control" id="videoGameTitle">
+        </div>
+        <div class="mb-3">
+          <label for="videoGameGenre" class="form-label">Genre</label>
+          <select class="form-select" id="videoGameGenre"></select>
+        </div>
+        <div class="mb-3">
+          <label for="videoGamePlatform" class="form-label">Platform</label>
+          <select class="form-select" id="videoGamePlatform"></select>
+        </div>
+        <div class="mb-3">
+          <label for="videoGameDeveloper" class="form-label">Developer</label>
+          <select class="form-select" id="videoGameDeveloper"></select>
+        </div>
+        <div class="mb-3">
+          <label for="videoGamePublisher" class="form-label">Publisher</label>
+          <select class="form-select" id="videoGamePublisher"></select>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+      </form>
+    </div>
+    <div class="col-10">
+      <div class="row row-cols-3">
+        <div class="col mb-3" *ngFor="let placeholder of placeholderList">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <img src="https://cdn.cdkeys.com/700x700/media/catalog/product/e/l/elden_ring_deluxe_edition_xbox_one_xbox_series_x_s_uk__1_1_1_1.jpg" class="img-fluid h-100" alt="...">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h5 class="card-title">{{placeholder.title}}</h5>
+                  <p class="card-text">{{placeholder.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
