@@ -1,19 +1,21 @@
 package rest
 
 import classes.CustomResponse
-import entity.VideoGame
+import entity.Platform
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
-import service.VideoGameService
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+import service.PlatformService
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-class VideoGameRestController(@Autowired val videoGameService: VideoGameService) {
+class PlatformRestController(@Autowired val platformService: PlatformService) {
 
-    @GetMapping("/video_game/all")
-    fun getAllVideoGames(): List<VideoGame> {
-        return videoGameService.getAllVideoGames()
+    @GetMapping("platform/all")
+    fun getAllPlatforms(): List<Platform> {
+        return platformService.getAllPlatforms()
     }
 
     @ExceptionHandler(Exception::class)
@@ -21,5 +23,4 @@ class VideoGameRestController(@Autowired val videoGameService: VideoGameService)
         return ResponseEntity.badRequest()
             .body(CustomResponse(400, req.requestURI, ex.localizedMessage))
     }
-
 }

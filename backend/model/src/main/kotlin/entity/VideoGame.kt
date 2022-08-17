@@ -15,6 +15,12 @@ class VideoGame(
     @Column(name = "title", nullable = false)
     val title: String,
 
+    @Column(name = "description", nullable = true)
+    val description: String?,
+
+    @Column(name = "main_image", nullable = true)
+    val mainImage: String?,
+
     @Column(name = "release_date", nullable = true)
     val releaseDate: Date?,
 
@@ -36,12 +42,8 @@ class VideoGame(
     @JsonManagedReference("video_game_platform")
     val platforms: Set<Platform>?,
 
-    @ManyToMany
-    @JoinTable(
-        name = "video_game_company",
-        joinColumns = [JoinColumn(name = "video_game_id")],
-        inverseJoinColumns = [JoinColumn(name = "company_id")]
-    )
+    @ManyToOne
+    @JoinColumn(name = "developer")
     @JsonManagedReference("video_game_company")
-    val companies: Set<Company>?
+    val developer: Developer?
 )

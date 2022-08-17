@@ -5,8 +5,8 @@ import java.util.Date
 import javax.persistence.*
 
 @Entity
-@Table(name = "Companies")
-class Company(
+@Table(name = "developers")
+class Developer(
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ class Company(
     @JsonBackReference("platform_company")
     val platforms: Set<Platform>?,
 
-    @ManyToMany(mappedBy = "companies")
+    @OneToMany(mappedBy = "developer")
     @JsonBackReference("video_game_company")
     val videoGames: Set<VideoGame>?
 )

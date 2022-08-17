@@ -27,7 +27,7 @@ class Platform(
     @ManyToOne
     @JoinColumn(name = "developer")
     @JsonManagedReference("platform_company")
-    val developer: Company?,
+    val developer: Developer?,
 
     @Column(name = "release_date", nullable = true)
     val releaseDate: Date?,
