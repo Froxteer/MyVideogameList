@@ -19,20 +19,20 @@ class Platform(
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    var id: Int,
 
     @Column(name = "name", nullable = false)
-    val name: String,
+    var name: String,
 
     @ManyToOne
     @JoinColumn(name = "developer")
     @JsonManagedReference("platform_company")
-    val developer: Developer?,
+    var developer: Developer?,
 
     @Column(name = "release_date", nullable = true)
-    val releaseDate: Date?,
+    var releaseDate: Date?,
 
     @ManyToMany(mappedBy = "platforms")
     @JsonBackReference("video_game_platform")
-    val videoGames: Set<VideoGame>?
+    var videoGames: Set<VideoGame>?
 )

@@ -15,12 +15,12 @@ class Genre(
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    var id: Int,
 
     @Column(name = "name", nullable = false)
-    val name: String,
+    var name: String,
 
     @ManyToMany(mappedBy = "genres")
     @JsonBackReference("video_game_genre")
-    val videoGames: Set<VideoGame>?
+    var videoGames: Set<VideoGame>?
 )

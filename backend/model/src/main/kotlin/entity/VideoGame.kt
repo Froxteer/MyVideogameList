@@ -10,19 +10,19 @@ class VideoGame(
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    var id: Int,
 
     @Column(name = "title", nullable = false)
-    val title: String,
+    var title: String,
 
     @Column(name = "description", nullable = true)
-    val description: String?,
+    var description: String?,
 
     @Column(name = "main_image", nullable = true)
-    val mainImage: String?,
+    var mainImage: String?,
 
     @Column(name = "release_date", nullable = true)
-    val releaseDate: Date?,
+    var releaseDate: Date?,
 
     @ManyToMany
     @JoinTable(
@@ -31,7 +31,7 @@ class VideoGame(
         inverseJoinColumns = [JoinColumn(name = "genre_id")]
     )
     @JsonManagedReference("video_game_genre")
-    val genres: Set<Genre>?,
+    var genres: Set<Genre>?,
 
     @ManyToMany
     @JoinTable(
@@ -40,10 +40,14 @@ class VideoGame(
         inverseJoinColumns = [JoinColumn(name = "platform_id")]
     )
     @JsonManagedReference("video_game_platform")
-    val platforms: Set<Platform>?,
+    var platforms: Set<Platform>?,
 
     @ManyToOne
     @JoinColumn(name = "developer")
     @JsonManagedReference("video_game_company")
-    val developer: Developer?
+    var developer: Developer?,
+
+    @OneToMany(mappedBy = "videoGame")
+    @JsonManagedReference("video_game_video_game_user")
+    var videoGameUsers: List<VideoGameUser>
 )

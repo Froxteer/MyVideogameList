@@ -1,5 +1,7 @@
 create schema mvl;
 
+create type mvl.list_concept as enum('PLAYED', 'PLAYING', 'ON_QUEUE');
+
 create table mvl.developers(
     id serial primary key,
     name varchar(50) not null,
@@ -30,6 +32,13 @@ create table mvl.platforms(
     foreign key (developer) references mvl.developers(id)
 );
 
+create table mvl.users(
+    id serial primary key,
+    email varchar(50) unique not null,
+    username varchar(50) unique not null,
+    password varchar(100) not null
+);
+
 create table mvl.video_game_genre(
     video_game_id integer,
     genre_id integer,
@@ -44,4 +53,13 @@ create table mvl.video_game_platform(
     foreign key (video_game_id) references mvl.video_games(id),
     foreign key (platform_id) references mvl.platforms(id),
     primary key(video_game_id, platform_id)
+);
+
+create table mvl.video_game_user(
+    video_game_id integer,
+    user_id integer,
+    list_concept mvl.list_concept not null,
+    foreign key (video_game_id) references mvl.video_games(id),
+    foreign key (user_id) references mvl.users(id),
+    primary key (video_game_id, user_id)
 );
