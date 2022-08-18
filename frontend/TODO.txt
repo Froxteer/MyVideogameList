@@ -1,0 +1,3 @@
+- Implement back navigation or breadcrumbs in search/search-detail components
+- Use typed forms in search component
+- Fixed reload in search-detail

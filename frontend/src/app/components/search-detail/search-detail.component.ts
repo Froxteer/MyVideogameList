@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VideoGame} from "../../model/VideoGame";
+import {VideoGameService} from "../../service/video-game.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-search-detail',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchDetailComponent implements OnInit {
 
-  constructor() { }
+  public videoGame?: VideoGame
+
+  constructor(
+    private videoGameService: VideoGameService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    this.videoGame = this.videoGameService.selectedVideoGame
   }
 
+  goBack() {
+    this.location.back()
+  }
 }

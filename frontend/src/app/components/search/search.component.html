@@ -34,7 +34,7 @@
     <div class="col-10">
       <div class="row row-cols-3">
         <div class="col mb-3" *ngFor="let videoGame of filteredVideoGames">
-          <div class="card element-hover" routerLink="test">
+          <div class="card element-hover" [routerLink]="videoGame.title" (click)="selectVideoGame(videoGame)">
             <div class="row g-0">
               <div class="col-md-3">
                 <img [src]="videoGame.mainImage" class="card-img h-100" alt="...">

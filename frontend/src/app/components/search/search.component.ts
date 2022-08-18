@@ -75,4 +75,8 @@ export class SearchComponent implements OnInit {
   resetVideoGames() {
     this.filteredVideoGames = this.videoGames
   }
+
+  selectVideoGame(videoGame: VideoGame) {
+    this.videoGameService.selectedVideoGame = videoGame
+  }
 }

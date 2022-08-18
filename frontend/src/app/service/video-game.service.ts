@@ -8,6 +8,8 @@ import {VideoGame} from "../model/VideoGame";
 })
 export class VideoGameService {
 
+  public selectedVideoGame?: VideoGame
+
   constructor(private http: HttpClient) { }
 
   public getAllVideoGames(): Observable<VideoGame[]> {
