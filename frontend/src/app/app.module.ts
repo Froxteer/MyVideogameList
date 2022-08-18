@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchDetailComponent } from './components/search-detail/search-detail.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     SearchComponent,
     HomeComponent,
     SearchDetailComponent,
+    LoginRegisterComponent,
   ],
   imports: [
     BrowserModule,
