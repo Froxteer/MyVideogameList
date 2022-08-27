@@ -8,6 +8,7 @@ import {DeveloperService} from "../../service/developer.service";
 import {VideoGame} from "../../model/VideoGame";
 import {VideoGameService} from "../../service/video-game.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-search',
@@ -28,7 +29,8 @@ export class SearchComponent implements OnInit {
     private genreService: GenreService,
     private platformService: PlatformService,
     private developerService: DeveloperService,
-    private videoGameService: VideoGameService
+    private videoGameService: VideoGameService,
+    private userService: UserService
   ) {
     this.filterForm = new FormGroup<any>({
       'title': new FormControl(null),
@@ -39,12 +41,14 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.userService.currentUserId)
     this.genreService.getAllGenres().subscribe(genres => this.genres = genres)
     this.platformService.getAllPlatforms().subscribe(platforms => this.platforms = platforms)
     this.developerService.getAllDevelopers().subscribe(developers => this.developers = developers)
-    this.videoGameService.getAllVideoGames().subscribe(videoGames => {
+    this.videoGameService.getAllVideoGames(this.userService.currentUserId).subscribe(videoGames => {
       this.videoGames = videoGames
       this.filteredVideoGames = videoGames
+      console.log(videoGames)
     })
   }
 

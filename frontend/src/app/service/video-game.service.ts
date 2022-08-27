@@ -12,8 +12,26 @@ export class VideoGameService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllVideoGames(): Observable<VideoGame[]> {
-    return this.http.get<VideoGame[]>('http://localhost:8080/video_game/all')
+  public getAllVideoGames(userId?: number): Observable<VideoGame[]> {
+    if (userId) {
+      return this.http.get<VideoGame[]>('http://localhost:8080/video_game/all', {
+        params: {
+          userId: userId
+        }
+      })
+    } else {
+      return this.http.get<VideoGame[]>('http://localhost:8080/video_game/all')
+    }
+  }
+
+  public persistVideoGameRelation(userId: number, videoGameId: number, conceptId: number): Observable<any> {
+    return this.http.post('http://localhost:8080/video_game/relation/persist', undefined, {
+      params: {
+        userId: userId,
+        videoGameId: videoGameId,
+        conceptId: conceptId
+      }
+    })
   }
 
 }

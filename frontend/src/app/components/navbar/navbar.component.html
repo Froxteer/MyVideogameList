@@ -11,19 +11,18 @@
         </li>
       </ul>
     </div>
-    <div class="justify-content-end" *ngIf="true">
+    <div class="justify-content-end" *ngIf="!userService.loggedIn">
       <button class="btn btn-outline-dark" routerLink="login_register">LogIn/SignUp</button>
     </div>
-    <div class="collapse navbar-collapse justify-content-end" *ngIf="false">
+    <div class="collapse navbar-collapse justify-content-end" *ngIf="userService.loggedIn">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            User
+            {{ userService.currentUsername }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item element-hover">My list</a></li>
+            <li><a class="dropdown-item element-hover" (click)="logOut()">LogOut</a></li>
           </ul>
         </li>
       </ul>

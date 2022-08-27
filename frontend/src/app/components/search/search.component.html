@@ -41,9 +41,15 @@
               </div>
               <div class="col-md-9">
                 <div class="card-body">
-                  <h3 class="card-title mb-4">{{videoGame.title}}</h3>
+                  <h2 class="card-title mb-4">{{videoGame.title}}</h2>
                   <p class="card-text"><span class="fw-bold">Developer:</span> {{videoGame.developer?.name}}</p>
                   <p class="card-text"><span class="fw-bold">Release date:</span> {{videoGame.releaseDate | date}}</p>
+                  <select class="form-select w-50" (click)="$event.stopPropagation()">
+                    <option [value]="0" [selected]="!videoGame.videoGameUsers?.length"></option>
+                    <option [value]="1" [selected]="videoGame.videoGameUsers?.length && videoGame.videoGameUsers[0].listConcept.toString() === 'PLAYED'">Played</option>
+                    <option [value]="2" [selected]="videoGame.videoGameUsers?.length && videoGame.videoGameUsers[0].listConcept.toString() === 'PLAYING'">Playing</option>
+                    <option [value]="3" [selected]="videoGame.videoGameUsers?.length && videoGame.videoGameUsers[0].listConcept.toString() === 'ON_QUEUE'">On Queue</option>
+                  </select>
                 </div>
               </div>
             </div>

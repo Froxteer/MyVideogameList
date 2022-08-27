@@ -2,37 +2,39 @@
   <div class="row">
     <div class="col-6 pe-5">
       <h1 class="h1 mb-4">LogIn</h1>
-      <form>
+      <form [formGroup]="logInForm" (ngSubmit)="logIn()">
         <div class="mb-3">
           <label for="loginUsername" class="form-label">Username</label>
-          <input type="text" class="form-control" id="loginUsername">
+          <input type="text" class="form-control" id="loginUsername" formControlName="username">
         </div>
         <div class="mb-3">
           <label for="loginPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="loginPassword">
+          <input type="password" class="form-control" id="loginPassword" formControlName="password">
         </div>
+        <p class="form-text" style="color: red" *ngIf="failedLogin">Username or password invalid</p>
         <button type="submit" class="btn btn-primary">LogIn</button>
       </form>
     </div>
     <div class="col-6 ps-5">
       <h1 class="h1 mb-4">SignUp</h1>
-      <form>
+      <form [formGroup]="registerForm" (ngSubmit)="signUp()">
         <div class="mb-3">
           <label for="registerUsername" class="form-label">Username</label>
-          <input type="text" class="form-control" id="registerUsername">
+          <input type="text" class="form-control" id="registerUsername" formControlName="username">
         </div>
         <div class="mb-3">
           <label for="registerEmail" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="registerEmail">
+          <input type="email" class="form-control" id="registerEmail" formControlName="email">
         </div>
         <div class="mb-3">
           <label for="registerPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="registerPassword">
+          <input type="password" class="form-control" id="registerPassword" formControlName="password">
         </div>
         <div class="mb-3">
           <label for="registerPasswordRepeat" class="form-label">Repeat password</label>
-          <input type="password" class="form-control" id="registerPasswordRepeat">
+          <input type="password" class="form-control" id="registerPasswordRepeat" formControlName="repeat">
         </div>
+        <p class="form-text" style="color: red" *ngIf="failedRegister">Username or Email already exists</p>
         <button type="submit" class="btn btn-primary">SingUp</button>
       </form>
     </div>
