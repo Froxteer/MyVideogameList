@@ -49,5 +49,5 @@ class VideoGame(
 
     @OneToMany(mappedBy = "videoGame")
     @JsonManagedReference("video_game_video_game_user")
-    var videoGameUsers: List<VideoGameUser>
+    var videoGameUsers: MutableList<VideoGameUser>?
 )

@@ -1,5 +1,6 @@
 package dao
 
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 interface Dao<T> {
@@ -8,7 +9,8 @@ interface Dao<T> {
 
     fun getAll(): List<T>
 
-    fun save(t: T)
+    @Transactional
+    fun save(t: T): T
 
     fun update(t: T)
 

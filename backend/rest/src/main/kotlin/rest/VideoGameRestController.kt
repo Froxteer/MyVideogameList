@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletRequest
 class VideoGameRestController(@Autowired val videoGameService: VideoGameService) {
 
     @GetMapping("/video_game/all")
-    fun getAllVideoGames(): List<VideoGame> {
-        return videoGameService.getAllVideoGames()
+    fun getAllVideoGames(@RequestParam(required = false) userId: Int?): List<VideoGame> {
+        return videoGameService.getAllVideoGames(userId)
     }
 
     @ExceptionHandler(Exception::class)
     fun handleIncorrectData(req: HttpServletRequest, ex: Exception): ResponseEntity<CustomResponse> {
         return ResponseEntity.badRequest()
-            .body(CustomResponse(400, req.requestURI, ex.localizedMessage))
+            .body(CustomResponse(400, req.requestURI, ex.message))
     }
 
 }

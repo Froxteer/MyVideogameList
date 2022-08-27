@@ -25,7 +25,7 @@ class VideoGameDao(@PersistenceContext val entityManager: EntityManager): Dao<Vi
         TODO("Not yet implemented")
     }
 
-    override fun save(t: VideoGame) {
+    override fun save(t: VideoGame): VideoGame {
         TODO("Not yet implemented")
     }
 }

@@ -25,7 +25,7 @@ class DeveloperDao(@PersistenceContext val entityManager: EntityManager): Dao<De
         TODO("Not yet implemented")
     }
 
-    override fun save(t: Developer) {
+    override fun save(t: Developer): Developer {
         TODO("Not yet implemented")
     }
 }

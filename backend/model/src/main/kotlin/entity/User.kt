@@ -1,6 +1,6 @@
 package entity
 
-import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
@@ -9,7 +9,7 @@ class User(
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int,
+    var id: Int?,
 
     @Column(name = "email", nullable = false)
     var email: String,
@@ -21,6 +21,6 @@ class User(
     var password: String,
 
     @OneToMany(mappedBy = "user")
-    @JsonBackReference("user_video_game_user")
-    var videoGameUsers: List<VideoGameUser>
+    @JsonManagedReference("user_video_game_user")
+    var videoGameUsers: List<VideoGameUser>?
 )

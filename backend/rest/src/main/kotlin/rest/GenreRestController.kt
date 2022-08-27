@@ -21,7 +21,7 @@ class GenreRestController(@Autowired val genreService: GenreService) {
     @ExceptionHandler(Exception::class)
     fun handleIncorrectData(req: HttpServletRequest, ex: Exception): ResponseEntity<CustomResponse> {
         return ResponseEntity.badRequest()
-            .body(CustomResponse(400, req.requestURI, ex.localizedMessage))
+            .body(CustomResponse(400, req.requestURI, ex.message))
     }
 
 }

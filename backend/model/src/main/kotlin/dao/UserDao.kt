@@ -24,7 +24,13 @@ class UserDao(@PersistenceContext val entityManager: EntityManager): Dao<User> {
         TODO("Not yet implemented")
     }
 
-    override fun save(t: User) {
+    override fun save(t: User): User {
         entityManager.persist(t)
+        return t
+    }
+
+    fun getByUsername(username: String): User {
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.username=:username", User::class.java)
+            .setParameter("username", username).singleResult
     }
 }

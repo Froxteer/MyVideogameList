@@ -26,7 +26,7 @@ class GenreDao(@PersistenceContext val entityManager: EntityManager): Dao<Genre>
         TODO("Not yet implemented")
     }
 
-    override fun save(t: Genre) {
+    override fun save(t: Genre): Genre {
         TODO("Not yet implemented")
     }
 }

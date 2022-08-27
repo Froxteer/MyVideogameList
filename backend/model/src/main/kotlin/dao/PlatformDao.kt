@@ -25,7 +25,7 @@ class PlatformDao(@PersistenceContext val entityManager: EntityManager): Dao<Pla
         TODO("Not yet implemented")
     }
 
-    override fun save(t: Platform) {
+    override fun save(t: Platform): Platform {
         TODO("Not yet implemented")
     }
 }
