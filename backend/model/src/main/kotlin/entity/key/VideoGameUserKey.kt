@@ -7,10 +7,10 @@ import javax.persistence.Embeddable
 @Embeddable
 class VideoGameUserKey(
     @Column(name = "video_game_id")
-    val videoGameId: Int,
+    var videoGameId: Int?,
 
     @Column(name = "user_id")
-    val userId: Int
+    var userId: Int?
 ): Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -26,7 +26,7 @@ class VideoGameUserKey(
 
     override fun hashCode(): Int {
         var result = videoGameId
-        result = 31 * result + userId
+        result = 31 * result!! + userId!!
         return result
     }
 }

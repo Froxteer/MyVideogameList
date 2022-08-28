@@ -12,8 +12,10 @@ interface Dao<T> {
     @Transactional
     fun save(t: T): T
 
+    @Transactional
     fun update(t: T)
 
+    @Transactional
     fun delete(t: T)
 
 }

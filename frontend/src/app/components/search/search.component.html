@@ -44,7 +44,7 @@
                   <h2 class="card-title mb-4">{{videoGame.title}}</h2>
                   <p class="card-text"><span class="fw-bold">Developer:</span> {{videoGame.developer?.name}}</p>
                   <p class="card-text"><span class="fw-bold">Release date:</span> {{videoGame.releaseDate | date}}</p>
-                  <select class="form-select w-50" (click)="$event.stopPropagation()">
+                  <select #concept *ngIf="userService.loggedIn" class="form-select w-75" (click)="$event.stopPropagation()" (change)="persistRelation(videoGame.id, $event, concept.value)">
                     <option [value]="0" [selected]="!videoGame.videoGameUsers?.length"></option>
                     <option [value]="1" [selected]="videoGame.videoGameUsers?.length && videoGame.videoGameUsers[0].listConcept.toString() === 'PLAYED'">Played</option>
                     <option [value]="2" [selected]="videoGame.videoGameUsers?.length && videoGame.videoGameUsers[0].listConcept.toString() === 'PLAYING'">Playing</option>

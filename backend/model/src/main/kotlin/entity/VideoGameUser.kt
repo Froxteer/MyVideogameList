@@ -3,6 +3,7 @@ package entity
 import com.fasterxml.jackson.annotation.JsonBackReference
 import entity.key.VideoGameUserKey
 import entity.utils.ListConcept
+import org.hibernate.annotations.Type
 import javax.persistence.*
 
 @Entity

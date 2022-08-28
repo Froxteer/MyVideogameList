@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext
 @Component
 class UserDao(@PersistenceContext val entityManager: EntityManager): Dao<User> {
     override fun get(id: Int): Optional<User> {
-        TODO("Not yet implemented")
+        return Optional.ofNullable(entityManager.find(User::class.java, id))
     }
 
     override fun getAll(): List<User> {

@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
     private platformService: PlatformService,
     private developerService: DeveloperService,
     private videoGameService: VideoGameService,
-    private userService: UserService
+    public userService: UserService
   ) {
     this.filterForm = new FormGroup<any>({
       'title': new FormControl(null),
@@ -41,14 +41,12 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.userService.currentUserId)
     this.genreService.getAllGenres().subscribe(genres => this.genres = genres)
     this.platformService.getAllPlatforms().subscribe(platforms => this.platforms = platforms)
     this.developerService.getAllDevelopers().subscribe(developers => this.developers = developers)
     this.videoGameService.getAllVideoGames(this.userService.currentUserId).subscribe(videoGames => {
       this.videoGames = videoGames
       this.filteredVideoGames = videoGames
-      console.log(videoGames)
     })
   }
 
@@ -58,19 +56,14 @@ export class SearchComponent implements OnInit {
 
     this.videoGames?.forEach(videoGame => {
       if (filterMap.title && !videoGame.title.toUpperCase().includes(filterMap.title.toUpperCase())) {
-        console.log('title')
         return
       } else if (+filterMap.genre !== 0 && !videoGame.genres?.filter(genre => genre.id === +filterMap.genre).length) {
-        console.log(filterMap.genre)
         return
       } else if (+filterMap.platform !== 0 && !videoGame.platforms?.filter(platform => platform.id === +filterMap.platform).length) {
-        console.log('platform')
         return
       } else if (+filterMap.developer !== 0 && videoGame.developer?.id !== +filterMap.developer) {
-        console.log('developer')
         return
       } else {
-        console.log('inserted!')
         this.filteredVideoGames?.push(videoGame)
       }
     })
@@ -82,5 +75,13 @@ export class SearchComponent implements OnInit {
 
   selectVideoGame(videoGame: VideoGame) {
     this.videoGameService.selectedVideoGame = videoGame
+  }
+
+  persistRelation(videoGameId: number, event: Event, value: string) {
+    event.stopPropagation()
+    if (this.userService.currentUserId) {
+      this.videoGameService.persistVideoGameRelation(this.userService.currentUserId, videoGameId, Number(value))
+        .subscribe()
+    }
   }
 }

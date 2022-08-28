@@ -1,7 +1,9 @@
 package dao
 
 import entity.VideoGame
+import entity.VideoGameUser
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -9,7 +11,7 @@ import javax.persistence.PersistenceContext
 @Component
 class VideoGameDao(@PersistenceContext val entityManager: EntityManager): Dao<VideoGame> {
     override fun get(id: Int): Optional<VideoGame> {
-        TODO("Not yet implemented")
+        return Optional.ofNullable(entityManager.find(VideoGame::class.java, id))
     }
 
     override fun getAll(): List<VideoGame> {

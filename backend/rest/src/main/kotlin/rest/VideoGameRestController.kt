@@ -16,6 +16,11 @@ class VideoGameRestController(@Autowired val videoGameService: VideoGameService)
         return videoGameService.getAllVideoGames(userId)
     }
 
+    @PostMapping("/video_game/relation/persist")
+    fun persistVideoGameRelation(@RequestParam userId: Int, @RequestParam videoGameId: Int, @RequestParam conceptId: Int) {
+        videoGameService.persistVideoGameRelation(userId, videoGameId, conceptId)
+    }
+
     @ExceptionHandler(Exception::class)
     fun handleIncorrectData(req: HttpServletRequest, ex: Exception): ResponseEntity<CustomResponse> {
         return ResponseEntity.badRequest()
