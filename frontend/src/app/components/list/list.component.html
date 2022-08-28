@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4">
+      <h3 class="mb-3">On Queue</h3>
+      <div class="list-group">
+        <div class="list-group-item element-hover" *ngFor="let videoGame of onQueueList" (click)="selectVideoGame(videoGame)">
+          <div class="row">
+            <div class="col-4">
+              <img class="img-thumbnail h-100 w-100" [src]="videoGame.mainImage">
+            </div>
+            <div class="col-8">
+              <h3>{{ videoGame.title }}</h3>
+              <p><span class="fw-bold">Developer:</span> {{ videoGame.developer?.name }}</p>
+              <p><span class="fw-bold">Release date:</span> {{ videoGame.releaseDate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h3 class="mb-3">Playing</h3>
+      <div class="list-group-item element-hover" *ngFor="let videoGame of playingList" (click)="selectVideoGame(videoGame)">
+        <div class="row">
+          <div class="col-4">
+            <img class="img-thumbnail h-100 w-100" [src]="videoGame.mainImage">
+          </div>
+          <div class="col-8">
+            <h3>{{ videoGame.title }}</h3>
+            <p><span class="fw-bold">Developer:</span> {{ videoGame.developer?.name }}</p>
+            <p><span class="fw-bold">Release date:</span> {{ videoGame.releaseDate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h3 class="mb-3">Played</h3>
+      <div class="list-group-item element-hover" *ngFor="let videoGame of playedList" (click)="selectVideoGame(videoGame)">
+        <div class="row">
+          <div class="col-4">
+            <img class="img-thumbnail h-100 w-100" [src]="videoGame.mainImage">
+          </div>
+          <div class="col-8">
+            <h3>{{ videoGame.title }}</h3>
+            <p><span class="fw-bold">Developer:</span> {{ videoGame.developer?.name }}</p>
+            <p><span class="fw-bold">Release date:</span> {{ videoGame.releaseDate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

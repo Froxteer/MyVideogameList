@@ -19,6 +19,12 @@ class VideoGameDao(@PersistenceContext val entityManager: EntityManager): Dao<Vi
         return entityManager.createQuery(criteriaQuery.select(criteriaQuery.from(VideoGame::class.java))).resultList
     }
 
+    fun getAllAssigned(userId: Int): List<VideoGame> {
+        return entityManager.createQuery(
+            "SELECT v FROM VideoGame v INNER JOIN VideoGameUser vu ON v.id = vu.videoGame.id WHERE vu.user.id = :userId", VideoGame::class.java)
+            .setParameter("userId", userId).resultList
+    }
+
     override fun delete(t: VideoGame) {
         TODO("Not yet implemented")
     }

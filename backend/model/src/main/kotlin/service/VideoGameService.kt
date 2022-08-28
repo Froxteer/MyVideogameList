@@ -25,17 +25,15 @@ class VideoGameService(
         if (Objects.isNull(userId)) {
             videoGames.forEach { videoGame -> videoGame.videoGameUsers = null }
         } else {
-            for (videoGame in videoGames) {
-                val parsedVideoGameUsers = mutableListOf<VideoGameUser>()
-                for (videoGameUser in videoGame.videoGameUsers!!) {
-                    if (Objects.equals(videoGameUser.user.id, userId)) {
-                        parsedVideoGameUsers.add(videoGameUser)
-                    }
-                }
-                videoGame.videoGameUsers = parsedVideoGameUsers
-            }
+            removeNonCurrentUserRelations(videoGames, userId!!)
         }
 
+        return videoGames
+    }
+
+    fun getAllAssignedVideoGames(userId: Int): List<VideoGame> {
+        val videoGames = videoGameDao.getAllAssigned(userId)
+        removeNonCurrentUserRelations(videoGames, userId)
         return videoGames
     }
 
@@ -70,6 +68,18 @@ class VideoGameService(
                 }
                 videoGameUserDao.save(videoGameUser)
             }
+        }
+    }
+
+    private fun removeNonCurrentUserRelations(videoGames: List<VideoGame>, userId: Int) {
+        for (videoGame in videoGames) {
+            val parsedVideoGameUsers = mutableListOf<VideoGameUser>()
+            for (videoGameUser in videoGame.videoGameUsers!!) {
+                if (Objects.equals(videoGameUser.user.id, userId)) {
+                    parsedVideoGameUsers.add(videoGameUser)
+                }
+            }
+            videoGame.videoGameUsers = parsedVideoGameUsers
         }
     }
 

@@ -16,6 +16,11 @@ class VideoGameRestController(@Autowired val videoGameService: VideoGameService)
         return videoGameService.getAllVideoGames(userId)
     }
 
+    @GetMapping("video_game/assigned")
+    fun getAllAssignedVideoGames(@RequestParam userId: Int): List<VideoGame> {
+        return videoGameService.getAllAssignedVideoGames(userId)
+    }
+
     @PostMapping("/video_game/relation/persist")
     fun persistVideoGameRelation(@RequestParam userId: Int, @RequestParam videoGameId: Int, @RequestParam conceptId: Int) {
         videoGameService.persistVideoGameRelation(userId, videoGameId, conceptId)

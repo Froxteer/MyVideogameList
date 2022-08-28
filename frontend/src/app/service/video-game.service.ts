@@ -24,6 +24,14 @@ export class VideoGameService {
     }
   }
 
+  public getAllAssignedVideoGames(userId: number): Observable<VideoGame[]> {
+    return this.http.get<VideoGame[]>('http://localhost:8080/video_game/assigned', {
+      params: {
+        userId: userId
+      }
+    })
+  }
+
   public persistVideoGameRelation(userId: number, videoGameId: number, conceptId: number): Observable<any> {
     return this.http.post('http://localhost:8080/video_game/relation/persist', undefined, {
       params: {

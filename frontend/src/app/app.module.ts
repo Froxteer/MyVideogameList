@@ -10,6 +10,7 @@ import { SearchDetailComponent } from './components/search-detail/search-detail.
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
     HomeComponent,
     SearchDetailComponent,
     LoginRegisterComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
